@@ -11,7 +11,7 @@ import (
 
 func main() {
 	client := client.New("http://localhost:3000");
-	price, err := client.FetchPrice(context.Background(), "ETH");
+	price, err := client.FetchPrice(context.Background(), "ET");
 	if err != nil {
 		log.Fatal(err);
 	}
