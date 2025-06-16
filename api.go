@@ -5,16 +5,13 @@ import (
 	"encoding/json"
 	"math/rand/v2"
 	"net/http"
+
+	"github.com/sudatra/golang-grpc-json-microservice.git/types"
 )
 
 type JSONAPIServer struct {
 	listenAddr	string
 	svc 				PriceFetcher
-}
-
-type PriceResponse struct {
-	Ticker 	string		`json:"ticker"`
-	Price		float64		`json:"price"`
 }
 
 type APIFunc func(context.Context, http.ResponseWriter, *http.Request) error
@@ -55,7 +52,7 @@ func (s *JSONAPIServer) handleFetchPrice(
 		return err;
 	}
 
-	priceResp := PriceResponse{
+	priceResp := types.PriceResponse{
 		Price: price,
 		Ticker: ticker,
 	}
